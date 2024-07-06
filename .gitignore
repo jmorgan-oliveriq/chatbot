@@ -1,2 +1,4 @@
+# Ignore folders
 /.env
 /.venv
+/langchain_intro/__pycache__
