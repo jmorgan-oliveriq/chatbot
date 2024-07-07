@@ -11,7 +11,7 @@ embedding_func = embedding_functions.SentenceTransformerEmbeddingFunction(
     model_name=EMBED_MODEL
 )
 
-collection = client.create_collection(
+collection = client.get_or_create_collection(
     name=COLLECTION_NAME,
     embedding_function=embedding_func,
     metadata={"hnsw:space": "cosine"},
@@ -45,7 +45,7 @@ genres = [
 
 collection.add(
     documents=documents,
-    id=[f"id{i}" for i in range(len(documents))],
+    ids=[f"id{i}" for i in range(len(documents))],
     metadatas=[{"genre": g} for g in genres]
 )
 
